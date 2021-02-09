@@ -4,12 +4,14 @@ public class Zwembad {
     private double breedte;
     private double lengte;
     private double diepte;
-    private double inhoud;
 
     public Zwembad(double breedte, double lengte, double diepte){
         this.breedte = breedte;
-        this.breedte = lengte;
-        this.breedte = diepte;
+        this.lengte = lengte;
+        this.diepte = diepte;
+    }
+
+    public Zwembad() {
     }
     public double getBreedte(){
         return breedte;
@@ -29,8 +31,9 @@ public class Zwembad {
     public void setDiepte(double diepte){
         this.diepte = diepte;
     }
-    public void inhoud(){
-        inhoud = breedte * lengte * diepte;
+    public double inhoud(){
+        return breedte * lengte * diepte;
+
     }
     public String toString(){
         return "Dit zwembad is " + breedte + " meter breed, " +
