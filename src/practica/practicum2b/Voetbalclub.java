@@ -9,7 +9,9 @@ public class Voetbalclub {
     public Voetbalclub(String naam){
         this.naam = naam;
     }
-
+    public String getNaam(){
+        return naam;
+    }
     public int getTotaalGewonnen(){
         return aantalGewonnen;
     }
@@ -36,7 +38,7 @@ public class Voetbalclub {
         return puntenGewonnen + puntenGelijk;
     }
     public String toString(){
-        return naam + "     " + aantalGespeeld() + " " + aantalGewonnen + " " + aantalGelijk
+        return naam + " " + aantalGespeeld() + " " + aantalGewonnen + " " + aantalGelijk
                 + " " + aantalVerloren + " " + aantalPunten();
 
     }
