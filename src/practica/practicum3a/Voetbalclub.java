@@ -1,5 +1,3 @@
-package practica.practicum3a;
-
 public class Voetbalclub {
     private String naam;
     private int aantalGewonnen;

@@ -14,11 +14,7 @@ public class AutoHuur {
         return aantalDagen;
     }
     public void setGehuurdeAuto(Auto gehuurdeAuto) {
-        if (gehuurdeAuto == null) {
-            System.out.println("er is geen auto bekend");
-        } else {
             this.gehuurdeAuto = gehuurdeAuto;
-        }
     }
     public Auto getGehuurdeAuto(){
         return gehuurdeAuto;
@@ -30,12 +26,45 @@ public class AutoHuur {
         return huurder;
     }
     public double totaalPrijs(){
-        return (aantalDagen * gehuurdeAuto.getPrijsPerDag()) - huurder.getKorting();
+        double totaalPrijsZonderKorting = aantalDagen * gehuurdeAuto.getPrijsPerDag();
+        double kortingBerekenen;
+        double totaalPrijsMetKorting;
+        if (huurder == null){
+            totaalPrijsMetKorting = totaalPrijsZonderKorting;
+        }
+        else {
+            kortingBerekenen = totaalPrijsZonderKorting / 100 * huurder.getKorting();
+            totaalPrijsMetKorting = totaalPrijsZonderKorting - kortingBerekenen;
+        }
+        return totaalPrijsMetKorting;
     }
     public String toString(){
-        return gehuurdeAuto + System.lineSeparator() +
-                huurder + System.lineSeparator() +
-                "aantal dagen: " + aantalDagen + " en dat kost " + totaalPrijs();
+        String s = "";
+        String geenAuto = "er is geen auto bekend";
+        String geenHuurder = "er is geen huurder bekend";
+        if (gehuurdeAuto == null && huurder == null) {
+            s = geenAuto + System.lineSeparator() + geenHuurder + System.lineSeparator() +
+                    "aantal dagen: " + aantalDagen + " en dat kost " + 0.0;
+
+        }
+        else if (gehuurdeAuto == null) {
+            s = geenAuto + System.lineSeparator() + getHuurder() + System.lineSeparator() +
+                    "aantal dagen: " + aantalDagen + " en dat kost " + 0.0;
+
+        }
+        else if (huurder == null){
+            s = getGehuurdeAuto() + System.lineSeparator() + geenHuurder + System.lineSeparator() +
+                    "aantal dagen: " + aantalDagen + " en dat kost " + totaalPrijs();
+            ;
+
+        }
+
+        else {
+            s = gehuurdeAuto + System.lineSeparator() +
+                    huurder + System.lineSeparator() + "aantal dagen: " + aantalDagen + " en dat kost " + totaalPrijs();
+        }
+        return s;
+
     }
 
 

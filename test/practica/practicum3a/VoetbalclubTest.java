@@ -2,6 +2,7 @@ package practica.practicum3a;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import practica.practicum2b.Voetbalclub;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
